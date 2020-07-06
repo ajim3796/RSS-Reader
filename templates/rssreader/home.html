@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+  <div class="flex-col">
+    <div class="flex px-20 pt-56 pb-20 text-6xl font-black">RSS Reader</div>
+    <div class="flex px-24 pb-4 text-xl">
+      <p>ブックマークもいいけど</p>
+    </div>
+    <div class="flex px-24 text-xl">ページの更新がわかるともっといい</div>
+    <div class="flex px-24 pt-20">
+      <a href="{% url 'login' %}" class="w-24 bg-white hover:bg-gray-200 text-gray-800 text-center font-semibold py-2 border border-gray-400 rounded shadow">
+        Login
+      </a>
+      <form method="post" action="{% url 'guest' %}">
+        {% csrf_token %}
+        <div class="flex">
+          <button type="submit" class="w-24 bg-gray-800 hover:bg-gray-600 text-gray-100 text-center font-semibold py-2 border border-gray-400 rounded shadow">
+            Guest
+          </button>
+        </div>
+      </form>
+      <a href="{% url 'signup' %}" class="w-24 bg-white hover:bg-gray-200 text-gray-800 text-center font-semibold py-2 border border-gray-400 rounded shadow">
+        Sign Up
+      </a>
+    </div>
+  </div>
+{% endblock content %}

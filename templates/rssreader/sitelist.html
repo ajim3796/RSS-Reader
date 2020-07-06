@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="post" action="{% url 'delete' %}">
+    <div class="flex-col">
+      <div class="flex">
+        <a href="{% url 'form' %}" class="bg-white hover:bg-gray-200 text-gray-800 font-medium px-4 py-2 my-2 border border-gray-400 rounded shadow">Feedを追加する</a>
+      </div>
+      {% for sorted in sorted_rssmodel %}
+        {% if sorted.feed_user == user.username %}
+          <div class="flex flex-row items-center">
+            <input type="checkbox" name="delete_ids" value="{{ sorted.id }}" class="m-1">
+            <a href="{% url 'feedlist' sorted.pk %}" class="text-lg m-1 hover:text-gray-600">{{ sorted.feed_title }}</a>
+            <p class="text-sm text-gray-600 m-1">{{ sorted.feed_update }}</p>
+            <p class="text-sm text-gray-600 m-1">更新</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% csrf_token %}
+      <div class="flex">
+        <button type="submit" class="bg-gray-800 hover:bg-gray-600 text-gray-100 font-medium px-4 py-2 my-2 border border-gray-400 rounded shadow">削除</button>
+      </div>
+    </div>
+  </form>
+{% endblock content %}

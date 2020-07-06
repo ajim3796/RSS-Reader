@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,500|Noto+Sans+JP&display=swap&subset=japanese" rel="stylesheet">
+
+    <title>
+      {% block title %}RSS Reader{% endblock title %}
+    </title>
+
+  </head>
+
+  <body class="flex flex-col min-h-screen" style="font-family: -apple-system, BlinkMacSystemFont, 'Heebo', 'ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;">
+    <main class="flex-grow">
+
+      {% block navbar %}
+        <div class="flex bg-gray-300 px-20">
+          <a class="flex-grow font-semibold text-5xl py-4" href="{% url 'sitelist' %}">RSS Reader</a>
+          <div class="flex items-center">
+            <div class="px-2">{{ user.username }}</div>
+            <a href="{% url 'logout' %}" class="bg-white hover:bg-gray-200 text-gray-800 font-medium px-4 py-2 my-2 border border-gray-400 rounded shadow">Logout</a>
+          </div>
+        </div>
+      {% endblock navbar %}
+
+      <div class="px-20">
+        {% block content %}{% endblock content %}
+      </div>
+
+    </main>
+
+    <footer>
+      {% block footer %}
+        <div class="bg-gray-200 p-2 text-center text-base">&copy; 2020 ajim</div>
+      {% endblock footer %}
+    </footer>
+
+  </body>
+
+</html>

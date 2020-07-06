@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="flex-col">
+    <div class="text-4xl font-medium my-3">{{ feed_title }}</div>
+    <hr>
+
+    {% for entry, update in feed_list %}
+      <div class="py-1">
+        <div class="flex flex-row items-center">
+          <a class="text-lg m-1 hover:text-gray-600" href="{{ entry.link }}" target="_new">{{ entry.title }}</a>
+          <div class="text-sm text-gray-600 m-1">{{ update }}</div>
+          <div class="text-sm text-gray-600 m-1">更新</div>
+        </div>
+
+        {% for image in entry.content %}
+          <div class="my-4">
+            {% autoescape off %}
+              {{ image.value }}
+            {% endautoescape %}
+          </div>
+          <hr>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
