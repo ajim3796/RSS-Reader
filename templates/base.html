@@ -14,31 +14,34 @@
 
   </head>
 
-  <body class="flex flex-col min-h-screen" style="font-family: -apple-system, BlinkMacSystemFont, 'Heebo', 'ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;">
-    <main class="flex-grow">
-
+  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Heebo', 'ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;">
+    <div class="flex flex-col min-h-screen">
       {% block navbar %}
-        <div class="flex bg-gray-300 px-20">
-          <a class="flex-grow font-semibold text-5xl py-4" href="{% url 'sitelist' %}">RSS Reader</a>
-          <div class="flex items-center">
-            <div class="px-2">{{ user.username }}</div>
-            <a href="{% url 'logout' %}" class="bg-white hover:bg-gray-200 text-gray-800 font-medium px-4 py-2 my-2 border border-gray-400 rounded shadow">Logout</a>
+        <div class="flex bg-gray-300 items-center">
+          <div class="w-full max-w-screen-xl relative mx-auto px-10">
+            <div class="flex flex-grow py-4">
+              <div class="w-full">
+                <a href="{% url 'sitelist' %}" class="font-semibold text-5xl">RSS Reader</a>
+              </div>
+              {% if request.user.is_authenticated %}
+                <div class="flex items-center">
+                  <div class="px-2">{{ user.username }}</div>
+                  <a href="{% url 'logout' %}" class="bg-white hover:bg-gray-200 text-gray-800 font-medium px-4 py-2 my-2 border border-gray-400 rounded shadow">Logout</a>
+                </div>
+              {% endif %}
+            </div>
           </div>
         </div>
       {% endblock navbar %}
-
-      <div class="px-20">
+      <div class="flex flex-grow w-full max-w-screen-xl mx-auto px-20">
         {% block content %}{% endblock content %}
       </div>
-
-    </main>
-
-    <footer>
-      {% block footer %}
-        <div class="bg-gray-200 p-2 text-center text-base">&copy; 2020 ajim</div>
-      {% endblock footer %}
-    </footer>
-
+      <div>
+        {% block footer %}
+          <div class="bg-gray-200 p-2 text-center text-base">&copy; 2020 ajim</div>
+        {% endblock footer %}
+      </div>
+    </div>
   </body>
 
 </html>

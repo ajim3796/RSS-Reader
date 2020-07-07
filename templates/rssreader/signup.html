@@ -1,12 +1,33 @@
 {% extends "base.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <div class="flex-col">
-    <form method="post">
+  <div class="flex flex-col items-center w-full">
+    <form method="post" class="rounded-lg max-w-md bg-gray-200 my-20 p-10">
       {% csrf_token %}
-      {{ form.as_p }}
+
+      {% if form.errors %}
+        {% for errors in form.errors.values %}
+          {% for error in errors %}
+            <div class="text-justify text-red-500 mb-4">{{ error }}</div>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+      <div class="grid grid-cols-5 gap-2">
+        {% for field in form %}
+          <div class="flex items-center col-span-2">
+            {{ field.label_tag }}
+          </div>
+          <div class="col-span-3">
+            {% render_field field class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %}
+          </div>
+        {% endfor %}
+      </div>
+
       <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Sign up</button>
     </form>
   </div>

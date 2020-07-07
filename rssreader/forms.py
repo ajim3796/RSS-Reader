@@ -9,6 +9,7 @@ class RssModelForm(ModelForm):
     class Meta:
         model = RssModel
         fields = ("feed_url",)
+        labels = {"feed_url": "URL"}
 
     def clean_feed_url(self):
         feed_url = self.cleaned_data["feed_url"]

@@ -3,13 +3,9 @@
 {% block navbar %}{% endblock navbar %}
 
 {% block content %}
-  <div class="flex-col">
-    <div class="flex px-20 pt-56 pb-20 text-6xl font-black">RSS Reader</div>
-    <div class="flex px-24 pb-4 text-xl">
-      <p>ブックマークもいいけど</p>
-    </div>
-    <div class="flex px-24 text-xl">ページの更新がわかるともっといい</div>
-    <div class="flex px-24 pt-20">
+  <div class="flex flex-col items-center justify-center w-full">
+    <div class="pb-20 text-6xl font-black">RSS Reader</div>
+    <div class="flex">
       <a href="{% url 'login' %}" class="w-24 bg-white hover:bg-gray-200 text-gray-800 text-center font-semibold py-2 border border-gray-400 rounded shadow">
         Login
       </a>
@@ -24,6 +20,9 @@
       <a href="{% url 'signup' %}" class="w-24 bg-white hover:bg-gray-200 text-gray-800 text-center font-semibold py-2 border border-gray-400 rounded shadow">
         Sign Up
       </a>
+    </div>
+    <div class="pt-20">
+      <p class="text-sm text-gray-600">2020-7-7 更新</p>
     </div>
   </div>
 {% endblock content %}
