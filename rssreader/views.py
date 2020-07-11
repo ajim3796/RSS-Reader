@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import django_filters
 import feedparser
 import pytz
 from django.contrib.auth import login
@@ -9,9 +10,11 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView
+from rest_framework import filters, viewsets
 
 from .forms import RssModelForm
 from .models import RssModel
+from .serializer import RssModelSeriializer
 
 
 class HomeView(TemplateView):
@@ -101,3 +104,8 @@ def guest_login_func(request):
     guest_user = User.objects.get(username="guest")
     login(request, guest_user, backend="django.contrib.auth.backends.ModelBackend")
     return redirect("sitelist")
+
+
+class RssModelViewSet(viewsets.ModelViewSet):
+    queryset = RssModel.objects.all()
+    serializer_class = RssModelSeriializer

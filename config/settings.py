@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rssreader.apps.RssreaderConfig",
     "widget_tweaks",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [

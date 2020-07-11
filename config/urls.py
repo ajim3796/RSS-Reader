@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rssreader.urls import router as rss_router
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/", include(rss_router.urls)),
     path("", include("django.contrib.auth.urls")),
     path("", include("rssreader.urls")),
 ]

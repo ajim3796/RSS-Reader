@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import RssModel
+
+
+@admin.register(RssModel)
+class RssModel(admin.ModelAdmin):
+    pass

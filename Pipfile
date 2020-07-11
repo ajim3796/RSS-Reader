@@ -7,8 +7,10 @@ verify_ssl = true
 
 [packages]
 django = "*"
+django-filter = "*"
 django-heroku = "*"
 django-widget-tweaks = "*"
+djangorestframework = "*"
 feedparser = "*"
 gunicorn = "*"
 

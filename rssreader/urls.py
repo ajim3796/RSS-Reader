@@ -1,9 +1,11 @@
 from django.urls import path
+from rest_framework import routers
 
 from .views import (
     FeedlistTemplateView,
     HomeView,
     RssModelCreateView,
+    RssModelViewSet,
     SignUp,
     SiteListView,
     deletefunc,
@@ -19,3 +21,6 @@ urlpatterns = [
     path("sitelist/", SiteListView.as_view(), name="sitelist"),
     path("feedlist/<int:pk>", FeedlistTemplateView.as_view(), name="feedlist"),
 ]
+
+router = routers.DefaultRouter()
+router.register("feeds", RssModelViewSet)
