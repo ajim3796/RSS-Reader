@@ -94,7 +94,7 @@ def deletefunc(request):
     if delete_ids:
         for delete_id in delete_ids:
             RssModel.objects.filter(id__in=delete_ids).delete()
-        return redirect("sitelist")
+    return redirect("sitelist")
 
 
 def guest_login_func(request):

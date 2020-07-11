@@ -10,7 +10,7 @@
       {% if form.errors %}
         {% for errors in form.errors.values %}
           {% for error in errors %}
-            <div class="text-justify text-red-500 mb-4">{{ error }}</div>
+            <div class="rounded text-justify bg-red-100 border-l-4 border-red-500 text-red-600 p-4 mb-4">{{ error }}</div>
           {% endfor %}
         {% endfor %}
       {% endif %}
