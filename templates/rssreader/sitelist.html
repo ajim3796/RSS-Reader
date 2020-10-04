@@ -12,8 +12,8 @@
           <div class="flex flex-row items-center">
             <input type="checkbox" name="delete_ids" value="{{ sorted.id }}" class="m-1">
             <a href="{% url 'feedlist' sorted.pk %}" class="text-lg m-1 hover:text-gray-600">{{ sorted.feed_title }}</a>
-            <p class="text-sm text-gray-600 m-1">{{ sorted.feed_update }}</p>
-            <p class="text-sm text-gray-600 m-1">更新</p>
+            <p class="text-sm text-gray-600 m-1 whitespace-no-wrap">{{ sorted.feed_update }}
+              更新</p>
           </div>
         {% endif %}
       {% endfor %}

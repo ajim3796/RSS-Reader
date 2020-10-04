@@ -9,8 +9,8 @@
       <div class="py-1">
         <div class="flex flex-row items-center">
           <a class="text-lg m-1 hover:text-gray-600" href="{{ entry.link }}" target="_new">{{ entry.title }}</a>
-          <div class="text-sm text-gray-600 m-1">{{ update }}</div>
-          <div class="text-sm text-gray-600 m-1">更新</div>
+          <div class="text-sm text-gray-600 m-1 whitespace-no-wrap">{{ update }}
+            更新</div>
         </div>
 
         {% for image in entry.content %}
